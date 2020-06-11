@@ -64,6 +64,8 @@ bool WaitIdle::prepare(vkb::Platform &platform)
 	set_render_pipeline(std::move(render_pipeline));
 
 	// Add a GUI with the stats you want to monitor
+	stats.reset();
+	stats = std::make_unique<vkb::Stats>(*render_context);
 	stats->request_stats({vkb::StatIndex::frame_times});
 	gui = std::make_unique<vkb::Gui>(*this, platform.get_window(), stats.get());
 
