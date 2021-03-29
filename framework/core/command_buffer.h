@@ -227,6 +227,8 @@ class CommandBuffer
 
 	void copy_buffer_to_image(const core::Buffer &buffer, const core::Image &image, const std::vector<VkBufferImageCopy> &regions);
 
+	void copy_image_to_buffer(const core::Image &image, VkImageLayout image_layout, const core::Buffer &buffer, const std::vector<VkBufferImageCopy> &regions);
+
 	void image_memory_barrier(const core::ImageView &image_view, const ImageMemoryBarrier &memory_barrier);
 
 	void buffer_memory_barrier(const core::Buffer &buffer, VkDeviceSize offset, VkDeviceSize size, const BufferMemoryBarrier &memory_barrier);

@@ -455,6 +455,12 @@ void CommandBuffer::copy_buffer_to_image(const core::Buffer &buffer, const core:
 	                       to_u32(regions.size()), regions.data());
 }
 
+void CommandBuffer::copy_image_to_buffer(const core::Image &image, VkImageLayout image_layout, const core::Buffer &buffer, const std::vector<VkBufferImageCopy> &regions)
+{
+	vkCmdCopyImageToBuffer(get_handle(), image.get_handle(), image_layout,
+	                       buffer.get_handle(), to_u32(regions.size()), regions.data());
+}
+
 void CommandBuffer::image_memory_barrier(const core::ImageView &image_view, const ImageMemoryBarrier &memory_barrier)
 {
 	// Adjust barrier's subresource range for depth images
